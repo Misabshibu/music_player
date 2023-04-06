@@ -51,13 +51,15 @@ class PlaylistsHomeList extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Playlist ',
-                                    style:
-                                        TextStyle(fontSize: size.width * 0.06),
+                                    style: TextStyle(
+                                        fontSize: size.width * 0.06,
+                                        color: const Color(0xffe0fbfc)),
                                   ),
                                   Text(
                                     'Songs 4',
-                                    style:
-                                        TextStyle(fontSize: size.width * 0.04),
+                                    style: TextStyle(
+                                        fontSize: size.width * 0.04,
+                                        color: const Color(0xffe0fbfc)),
                                   )
                                 ],
                               ),
