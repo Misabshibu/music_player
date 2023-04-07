@@ -1,5 +1,6 @@
-import 'package:audio_music_player/core/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/constants.dart';
 
 class NowplayingAppbar extends StatelessWidget {
   const NowplayingAppbar({

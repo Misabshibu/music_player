@@ -1,10 +1,12 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:audio_music_player/core/constants.dart';
-import 'package:audio_music_player/functions/audio_functions.dart';
-import 'package:audio_music_player/widgets/miniplayer_func.dart';
+import '../core/constants.dart';
+import '../functions/audio_functions.dart';
+import 'miniplayer_func.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+
+late AnimationController animationController;
 
 class SongListWidgetHome extends StatefulWidget {
   const SongListWidgetHome(
@@ -24,7 +26,6 @@ class SongListWidgetHome extends StatefulWidget {
 
 class _SongListWidgetHomeState extends State<SongListWidgetHome>
     with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
   @override
   void initState() {
     super.initState();

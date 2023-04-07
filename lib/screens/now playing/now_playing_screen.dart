@@ -1,6 +1,7 @@
-import 'package:audio_music_player/screens/now%20playing/widgets/nowplaying_appbar.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../now%20playing/widgets/nowplaying_appbar.dart';
 
 class ScreenNowPlaying extends StatelessWidget {
   const ScreenNowPlaying({super.key});

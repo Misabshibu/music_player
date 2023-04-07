@@ -1,6 +1,6 @@
-import 'package:audio_music_player/model/songsmodel.dart';
-import 'package:audio_music_player/screens/splash%20screen/splash_screen.dart';
-import 'package:audio_music_player/themes/theme_provider.dart';
+import 'model/songsmodel.dart';
+import 'screens/splash%20screen/splash_screen.dart';
+import 'themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';

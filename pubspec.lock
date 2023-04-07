@@ -201,6 +201,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  draggable_fab:
+    dependency: "direct main"
+    description:
+      name: draggable_fab
+      sha256: "5c4cc16fb61e44308c9f92a68bd12c127f1898b40a7baf31d75d27d019a591cc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.4"
   fake_async:
     dependency: transitive
     description:
@@ -416,11 +424,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  music_visualizer:
+  mini_music_visualizer:
     dependency: "direct main"
     description:
-      name: music_visualizer
-      sha256: "70907e9b4edd6c5ebb2249d8ffa5f9177b8c86ca5525adc11bbd2ff16f0caaab"
+      name: mini_music_visualizer
+      sha256: "7f42d95663449595457edff06ff397de796166c95f2a1ab7fd87405200571802"
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"

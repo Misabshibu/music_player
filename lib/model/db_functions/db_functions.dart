@@ -1,4 +1,4 @@
-import 'package:audio_music_player/model/songsmodel.dart';
+import '../songsmodel.dart';
 import 'package:hive/hive.dart';
 
 class DbFunctions {

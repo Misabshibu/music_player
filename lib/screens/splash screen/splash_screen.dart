@@ -1,5 +1,4 @@
-import 'package:audio_music_player/functions/audio_functions.dart';
-import 'package:audio_music_player/functions/splash_functions.dart';
+import '../../functions/splash_functions.dart';
 import 'package:flutter/material.dart';
 
 class ScreenSplash extends StatelessWidget {
