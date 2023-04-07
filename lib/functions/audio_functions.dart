@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:audio_music_player/model/db_functions/db_functions.dart';
-import 'package:audio_music_player/model/songsmodel.dart';
+import '../model/db_functions/db_functions.dart';
+import '../model/songsmodel.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 
 class AudioFucntions {

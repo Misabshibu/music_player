@@ -1,9 +1,10 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:audio_music_player/core/constants.dart';
-import 'package:audio_music_player/screens/home%20screen/home_screen.dart';
-import 'package:audio_music_player/widgets/songlist_widget_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+
+import '../../../core/constants.dart';
+import '../../../widgets/songlist_widget_home.dart';
+import '../../home%20screen/home_screen.dart';
 
 class HomeSongLists extends StatelessWidget {
   const HomeSongLists({Key? key, required this.allsongs}) : super(key: key);

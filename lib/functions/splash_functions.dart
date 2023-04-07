@@ -1,7 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:audio_music_player/functions/audio_functions.dart';
-import 'package:audio_music_player/model/songsmodel.dart';
-import 'package:audio_music_player/screens/home%20screen/home_screen.dart';
+import 'audio_functions.dart';
+import '../model/songsmodel.dart';
+import '../screens/home%20screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:on_audio_query/on_audio_query.dart';

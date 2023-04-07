@@ -1,12 +1,15 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:audio_music_player/core/constants.dart';
-import 'package:audio_music_player/screens/home%20screen/widgets/home_song_lists.dart';
-import 'package:audio_music_player/screens/home%20screen/widgets/home_title_widget.dart';
-import 'package:audio_music_player/screens/home%20screen/widgets/playlists_home_lists.dart';
+import 'package:audio_music_player/widgets/miniplayer_func.dart';
+import 'package:audio_music_player/widgets/songlist_widget_home.dart';
+import '../../core/constants.dart';
+import '../home%20screen/widgets/home_song_lists.dart';
+import '../home%20screen/widgets/home_title_widget.dart';
+import '../home%20screen/widgets/playlists_home_lists.dart';
+import '../../widgets/floating_movable_button.dart';
 import 'package:flutter/material.dart';
-import 'package:music_visualizer/music_visualizer.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
+ValueNotifier<bool> homeFloatingButton = ValueNotifier(false);
 
 class ScreenHome extends StatelessWidget {
   ScreenHome({super.key, required this.convertedAudios});
@@ -24,13 +27,21 @@ class ScreenHome extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: MusicVisualizer(
-              colors: colors,
-              barCount: 5,
-              duration: duration,
-            )),
+        floatingActionButton: ValueListenableBuilder(
+            valueListenable: homeFloatingButton,
+            builder: (context, value, _) {
+              return Visibility(
+                  visible: homeFloatingButton.value,
+                  child: FloatingMovableButton(
+                    onpressfunc: () {
+                      miniPlayerBottomsheet(
+                          context: context,
+                          size: size,
+                          animationController: animationController,
+                          allSongs: convertedAudios);
+                    },
+                  ));
+            }),
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
