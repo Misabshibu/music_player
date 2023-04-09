@@ -1,11 +1,11 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:audio_music_player/animation/floating_movable_button.dart';
 import 'package:audio_music_player/widgets/miniplayer_func.dart';
 import 'package:audio_music_player/widgets/songlist_widget_home.dart';
 import '../../core/constants.dart';
 import '../home%20screen/widgets/home_song_lists.dart';
 import '../home%20screen/widgets/home_title_widget.dart';
 import '../home%20screen/widgets/playlists_home_lists.dart';
-import '../../widgets/floating_movable_button.dart';
 import 'package:flutter/material.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
@@ -14,14 +14,6 @@ ValueNotifier<bool> homeFloatingButton = ValueNotifier(false);
 class ScreenHome extends StatelessWidget {
   ScreenHome({super.key, required this.convertedAudios});
   final List<Audio> convertedAudios;
-  final List<Color> colors = [
-    Colors.red[900]!,
-    Colors.green[900]!,
-    Colors.blue[900]!,
-    Colors.brown[900]!
-  ];
-
-  final List<int> duration = [900, 700, 600, 800, 500];
 
   @override
   Widget build(BuildContext context) {

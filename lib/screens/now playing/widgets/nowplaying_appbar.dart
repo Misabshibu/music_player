@@ -1,3 +1,4 @@
+import 'package:audio_music_player/widgets/common_appbar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants.dart';
@@ -9,14 +10,15 @@ class NowplayingAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      leading: const Icon(Icons.arrow_back_rounded),
-      title: const Text('Now Playing'),
-      centerTitle: true,
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      actions: const [
+    return CommonAppbar(
+      title: 'Now Playing',
+      leadingWidget: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Icon(Icons.arrow_back),
+      ),
+      actionWidgets: const [
         Icon(Icons.lyrics_outlined),
         widthbox10,
         Icon(Icons.more_vert_outlined),

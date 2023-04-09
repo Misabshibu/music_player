@@ -41,7 +41,7 @@ class _SongListWidgetHomeState extends State<SongListWidgetHome>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AudioFucntions.songplayNow(
+        AudioFunctions.songplayNow(
             fetchedaudios: widget.allSongs, index: widget.index);
         miniPlayerBottomsheet(
           allSongs: widget.allSongs,
@@ -106,11 +106,11 @@ class _SongListWidgetHomeState extends State<SongListWidgetHome>
                     onPressed: () {},
                     icon: const Icon(Icons.more_horiz_rounded)),
                 const Spacer(),
-                AudioFucntions.assetsAudioPlayer.builderCurrent(
+                AudioFunctions.assetsAudioPlayer.builderCurrent(
                     builder: (context, Playing? playing) {
-                  Audio myAudio = AudioFucntions.find(
+                  Audio myAudio = AudioFunctions.find(
                       widget.allSongs, playing!.audio.assetAudioPath);
-                  return AudioFucntions.assetsAudioPlayer.builderIsPlaying(
+                  return AudioFunctions.assetsAudioPlayer.builderIsPlaying(
                       builder: (context, isPlaying) {
                     return GestureDetector(
                       onTap: () {
@@ -137,14 +137,14 @@ class _SongListWidgetHomeState extends State<SongListWidgetHome>
               ],
             ),
             heightbox5,
-            AudioFucntions.assetsAudioPlayer.builderCurrent(
+            AudioFunctions.assetsAudioPlayer.builderCurrent(
                 builder: (context, Playing? playing) {
-              Audio myAudio = AudioFucntions.find(
+              Audio myAudio = AudioFunctions.find(
                   widget.allSongs, playing!.audio.assetAudioPath);
               return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: widget.allSongs[widget.index] == myAudio
-                      ? AudioFucntions.assetsAudioPlayer
+                      ? AudioFunctions.assetsAudioPlayer
                           .builderRealtimePlayingInfos(
                               builder: (context, RealtimePlayingInfos infos) {
                           Duration currentPos = infos.currentPosition;
@@ -156,7 +156,7 @@ class _SongListWidgetHomeState extends State<SongListWidgetHome>
                             progress: currentPos,
                             total: total,
                             onSeek: (to) {
-                              AudioFucntions.assetsAudioPlayer.seek(to);
+                              AudioFunctions.assetsAudioPlayer.seek(to);
                             },
                           );
                         })

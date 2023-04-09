@@ -78,10 +78,10 @@ class SplashFunctions {
     List<Audio> convertedAudios = [];
     await Permission.storage.request();
     await fetchSongs();
-    convertedAudios = AudioFucntions.convertToAudio();
+    convertedAudios = AudioFunctions.convertToAudio();
 
-    await Future.delayed(const Duration(seconds: 5));
-    AudioFucntions.songfirst(fetchedsongs: convertedAudios);
+    await Future.delayed(const Duration(seconds: 3));
+    AudioFunctions.songfirst(fetchedsongs: convertedAudios);
 
     Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) => ScreenHome(convertedAudios: convertedAudios)));

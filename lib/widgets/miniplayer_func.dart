@@ -1,13 +1,15 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:audio_music_player/animation/disc_animatin.dart';
 import 'package:audio_music_player/core/constants.dart';
 import 'package:audio_music_player/screens/home%20screen/home_screen.dart';
 import 'package:audio_music_player/screens/now%20playing/now_playing_screen.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:glass/glass.dart';
-import 'package:on_audio_query/on_audio_query.dart';
 
 import '../functions/audio_functions.dart';
+
+int nowplayingCurrentIndex = 0;
 
 miniPlayerBottomsheet(
     {required BuildContext context,
@@ -16,21 +18,24 @@ miniPlayerBottomsheet(
     required List<Audio> allSongs}) {
   homeFloatingButton.value = false;
 
-  showModalBottomSheet(
-      isDismissible: false,
+  showBottomSheet(
       backgroundColor: const Color.fromARGB(0, 218, 202, 202),
       enableDrag: true,
       elevation: 0,
       context: context,
       builder: (context) {
-        return AudioFucntions.assetsAudioPlayer.builderCurrent(
+        return AudioFunctions.assetsAudioPlayer.builderCurrent(
             builder: (context, Playing? playing) {
           Audio myAudio =
-              AudioFucntions.find(allSongs, playing!.audio.assetAudioPath);
+              AudioFunctions.find(allSongs, playing!.audio.assetAudioPath);
+
+          nowplayingCurrentIndex = allSongs.indexOf(myAudio);
           return InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const ScreenNowPlaying()));
+                  builder: (context) => ScreenNowPlaying(
+                        allSongs: allSongs,
+                      )));
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,7 +87,7 @@ miniPlayerBottomsheet(
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(fontSize: 15),
                                       ),
-                                      AudioFucntions.assetsAudioPlayer
+                                      AudioFunctions.assetsAudioPlayer
                                           .builderRealtimePlayingInfos(builder:
                                               (context,
                                                   RealtimePlayingInfos infos) {
@@ -97,7 +102,7 @@ miniPlayerBottomsheet(
                                           progress: currentPos,
                                           total: total,
                                           onSeek: (to) {
-                                            AudioFucntions.assetsAudioPlayer
+                                            AudioFunctions.assetsAudioPlayer
                                                 .seek(to);
                                           },
                                         );
@@ -128,22 +133,22 @@ miniPlayerBottomsheet(
                           children: [
                             GestureDetector(
                                 onTap: () {
-                                  AudioFucntions.prevSong();
+                                  AudioFunctions.prevSong();
                                 },
                                 child: const Icon(
                                   Icons.skip_previous_sharp,
                                   size: 35,
                                 )),
                             widthbox20,
-                            AudioFucntions.assetsAudioPlayer.builderIsPlaying(
+                            AudioFunctions.assetsAudioPlayer.builderIsPlaying(
                                 builder: (context, isPlaying) {
                               return GestureDetector(
                                 onTap: () {
                                   if (isPlaying) {
-                                    AudioFucntions.assetsAudioPlayer.pause();
+                                    AudioFunctions.assetsAudioPlayer.pause();
                                     animationController.stop();
                                   } else {
-                                    AudioFucntions.assetsAudioPlayer.play();
+                                    AudioFunctions.assetsAudioPlayer.play();
                                     animationController.repeat();
                                   }
                                 },
@@ -158,7 +163,7 @@ miniPlayerBottomsheet(
                             widthbox20,
                             GestureDetector(
                                 onTap: () {
-                                  AudioFucntions.nextSong();
+                                  AudioFunctions.nextSong();
                                 },
                                 child: const Icon(
                                   Icons.skip_next_sharp,
@@ -181,60 +186,13 @@ miniPlayerBottomsheet(
                   Positioned(
                       left: 30,
                       bottom: 30,
-                      child: SizedBox(
-                        child: CircleAvatar(
-                            radius: 40.0,
-                            backgroundColor: Colors.white,
-                            child: AnimatedBuilder(
-                              animation: animationController,
-                              child: ClipOval(
-                                // radius: 38.0,
-                                child: CircleAvatar(
-                                  radius: 38,
-                                  child: Container(
-                                    width: size.width * 0.22,
-                                    height: size.height * 0.12,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle),
-                                    child: QueryArtworkWidget(
-                                        artworkFit: BoxFit.cover,
-                                        id: int.parse(myAudio.metas.id!),
-                                        type: ArtworkType.AUDIO,
-                                        nullArtworkWidget: Image.asset(
-                                          'assets/images/nullsong_img.jpg',
-                                          fit: BoxFit.cover,
-                                        )),
-                                  ),
-                                ),
-                              ),
-                              builder: (BuildContext context, Widget? widget) {
-                                return Transform.rotate(
-                                  angle: animationController.value * 6.3,
-                                  child: widget,
-                                );
-                              },
-                            )
-
-                            //  CircleAvatar(
-                            //   radius: 38.0,
-                            //   backgroundImage: NetworkImage(
-                            //     'https://i.pinimg.com/564x/eb/26/bd/eb26bdbeb5c7fae05ff44734cc995a5e.jpg',
-                            //   ),
-                            //   child: Center(
-                            //     child: CircleAvatar(
-                            //       radius: 8,
-                            //     ),
-                            //   ),
-                            // )
-
-                            ),
-                      )),
+                      child: DiscAnimation(myAudio: myAudio, size: size)),
                 ]),
               ),
             ),
           );
         });
-      }).then((value) {
+      }).closed.then((value) {
     homeFloatingButton.value = true;
   });
 }
