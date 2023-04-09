@@ -4,7 +4,7 @@ import '../model/db_functions/db_functions.dart';
 import '../model/songsmodel.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 
-class AudioFucntions {
+class AudioFunctions {
   static final AssetsAudioPlayer assetsAudioPlayer =
       AssetsAudioPlayer.withId('0');
   //convert hivemodel  to adudio format
@@ -29,12 +29,14 @@ class AudioFucntions {
   //just play and pause at startig time to work assetaudioplayer builder
   static songfirst({required List<Audio> fetchedsongs}) async {
     await assetsAudioPlayer.setVolume(0);
+    await Future.delayed(const Duration(milliseconds: 1500));
 
     await assetsAudioPlayer.open(Playlist(audios: fetchedsongs, startIndex: 0),
         // autoStart: true,
+        volume: 0,
         showNotification: false);
 
-    assetsAudioPlayer.pause();
+    await assetsAudioPlayer.pause();
     assetsAudioPlayer.setVolume(1);
   }
 
